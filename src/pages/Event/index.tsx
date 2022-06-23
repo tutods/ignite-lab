@@ -4,7 +4,7 @@ const Event = () => {
 	return (
 		<>
 			<Header />
-			
+			<h1>teste</h1>
 		</>
 	);
 };
