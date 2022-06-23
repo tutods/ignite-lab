@@ -5,4 +5,6 @@
 // Custom Body
 body {
 	@apply bg-gray-900 text-gray-100;
+
+	-webkit-font-smoothing: antialiased;
 }
