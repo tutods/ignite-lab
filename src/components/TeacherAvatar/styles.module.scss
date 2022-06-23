@@ -1,0 +1,19 @@
+.avatar {
+	@apply flex items-center gap-4;
+
+	img {
+		@apply w-16 h-16 rounded-full border-2 border-blue-500;
+	}
+
+	&>div {
+		@apply leading-relaxed;
+
+		strong {
+			@apply block font-bold text-2xl;
+		}
+
+		span {
+			@apply block text-sm text-gray-400;
+		}
+	}
+}

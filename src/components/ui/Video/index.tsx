@@ -1,4 +1,5 @@
 import { Button } from 'components/Button';
+import { TeacherAvatar } from 'components/TeacherAvatar';
 import { DiscordLogo, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
 
@@ -20,6 +21,13 @@ const Video = () => {
 							integrando a API GraphQL gerada pela plataforma no nosso front-end
 							utilizando Apollo Client.
 						</p>
+
+						<TeacherAvatar
+							className={'mt-6'}
+							avatar={'https://github.com/tutods.png'}
+							name={'Daniel Sousa'}
+							description={'Frontend Developer at xgeeks'}
+						/>
 					</div>
 					<div>
 						<Button link={'teste'} icon={<DiscordLogo size={24} />}>
@@ -34,7 +42,9 @@ const Video = () => {
 						</Button>
 					</div>
 				</section>
-				<section></section>
+				<section>
+					
+				</section>
 			</article>
 		</section>
 	);

@@ -1,4 +1,6 @@
 .card {
+	@apply transition-colors ease-in-out;
+
 	span:first-of-type {
 		@apply text-gray-300;
 	}
@@ -20,6 +22,12 @@
 
 		strong {
 			@apply block text-gray-200;
+		}
+	}
+
+	&:hover {
+		div:first-of-type {
+			@apply border-green-500;
 		}
 	}
 }

@@ -1,0 +1,5 @@
+const AdditionalCard = () => {
+
+}
+
+export {AdditionalCard}
