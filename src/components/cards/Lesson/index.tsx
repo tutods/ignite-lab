@@ -1,0 +1,3 @@
+const LessonCard = () => {};
+
+export { LessonCard };
