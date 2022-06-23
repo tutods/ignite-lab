@@ -1,0 +1,19 @@
+.button {
+	@apply inline-flex items-center justify-center gap-2 border border-transparent rounded p-4 text-sm font-bold uppercase transition-all duration-150 ease-in-out shadow-none;
+
+	&.primary {
+		@apply bg-green-500 text-white;
+
+		&:hover {
+			@apply bg-green-700;
+		}
+	}
+
+	&.outlined {
+		@apply border-blue-500 text-blue-500;
+
+		&:hover {
+			@apply bg-blue-500 text-gray-800;
+		}
+	}
+}

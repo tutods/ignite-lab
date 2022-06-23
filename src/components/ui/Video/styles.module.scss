@@ -1,0 +1,38 @@
+.container {
+	@apply flex-1;
+
+	&>div {
+		@apply flex justify-center bg-black;
+
+		&>div {
+			@apply w-full h-full max-w-[1100px] max-h-[60vh] aspect-video;
+		}
+
+	}
+}
+
+.content {
+	@apply max-w-[1110px] mx-auto p-8;
+
+	&>section {
+		&:first-of-type {
+			@apply flex items-start gap-16 w-[100%];
+
+			&>div:nth-of-type(1) {
+				@apply flex-1;
+
+				h1 {
+					@apply text-2xl font-bold;
+				}
+
+				p {
+					@apply mt-4 text-gray-200;
+				}
+			}
+
+			&>div:nth-of-type(2) {
+				@apply flex flex-col gap-4;
+			}
+		}
+	}
+}

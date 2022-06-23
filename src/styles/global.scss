@@ -8,3 +8,8 @@ body {
 
 	-webkit-font-smoothing: antialiased;
 }
+
+a,
+button {
+	@apply cursor-pointer;
+}
