@@ -1,28 +1,44 @@
 import { Badge } from 'components/Badge';
-import { CheckCircle } from 'phosphor-react';
+import { format, isPast } from 'date-fns';
+import { CheckCircle, Lock } from 'phosphor-react';
 import styles from './styles.module.scss';
+import ptPT from 'date-fns/locale/pt';
 
 type Props = {
+	title: string;
+	slug: string;
 	type: 'class' | 'live';
-	unlocked?: boolean;
-	link: string;
+	availableAt: Date;
 };
 
-const LessonCard = () => {
+const LessonCard = ({ title, slug, type, availableAt }: Props) => {
+	const getAvailabilityContent = isPast(availableAt) ? (
+		<span>
+			<CheckCircle size={20} />
+			Conteúdo Liberado
+		</span>
+	) : (
+		<span className={styles['locked']}>
+			<Lock size={20} />
+			Em breve
+		</span>
+	);
+
+	const getFormattedData = format(availableAt, `EEEE' • 'dd' de 'MMMM' • 'k'h'mm`, {
+		locale: ptPT
+	});
+
 	return (
-		<a href="" className={styles['card']}>
-			<span>Domingo • 20 de junho • 19h00</span>
+		<a href={`lesson/${slug}`} className={styles['card']}>
+			<span>{getFormattedData}</span>
 
 			<div>
 				<header>
-					<span>
-						<CheckCircle size={20} />
-						Conteúdo Liberado
-					</span>
+					{getAvailabilityContent}
 
-					<Badge type={'live'} />
+					<Badge type={type} />
 				</header>
-				<strong>Abertura do evento Ignite labs</strong>
+				<strong>{title}</strong>
 			</div>
 		</a>
 	);

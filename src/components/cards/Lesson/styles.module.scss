@@ -12,6 +12,10 @@
 
 			&>span:first-of-type {
 				@apply flex gap-2 items-center text-sm text-blue-500 font-medium;
+
+				&.locked {
+					@apply text-orange-500
+				}
 			}
 		}
 
@@ -19,5 +23,4 @@
 			@apply block text-gray-200;
 		}
 	}
-
 }
