@@ -1,0 +1,23 @@
+.card {
+	span:first-of-type {
+		@apply text-gray-300;
+	}
+
+	div:first-of-type {
+
+		@apply rounded border border-gray-500 p-4 mt-2;
+
+		header {
+			@apply flex items-center justify-between gap-4 pb-4;
+
+			&>span:first-of-type {
+				@apply flex gap-2 items-center text-sm text-blue-500 font-medium;
+			}
+		}
+
+		strong {
+			@apply block text-gray-200;
+		}
+	}
+
+}
