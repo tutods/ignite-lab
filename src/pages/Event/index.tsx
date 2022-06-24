@@ -11,9 +11,9 @@ const Event = () => {
 		<div className={'flex min-h-screen flex-col'}>
 			<Header />
 			<main className={'flex flex-1'}>
-				<div className={'flex-1'}>
+				<div className={'flex flex-1 flex-col'}>
 					{slug ? <Video lessonSlug={slug} /> : <div className={'flex-1'} />}
-					<Footer />
+					<Footer className={'w-full'} />
 				</div>
 				<Sidebar />
 			</main>
