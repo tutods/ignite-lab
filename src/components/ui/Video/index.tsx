@@ -34,15 +34,13 @@ type Props = {
 const Video = ({ lessonSlug }: Props) => {
 	const navigate = useNavigate();
 
-	const { data } = useQuery<{ lesson: Lesson }>(GET_LESSON_BY_SLUG, {
+	const { data, loading } = useQuery<{ lesson: Lesson }>(GET_LESSON_BY_SLUG, {
 		variables: { slug: lessonSlug }
 	});
 
-	if (!data || !data.lesson) {
+	if (loading) {
 		return <div className={'flex-1'}>Loading...</div>;
-	}
-
-	if (data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
+	} else if (data && data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
 		navigate(-1);
 	}
 
