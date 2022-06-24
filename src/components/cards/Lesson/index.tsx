@@ -31,7 +31,12 @@ const LessonCard = ({ title, slug, type, availableAt, active = false }: Props) =
 	});
 
 	return (
-		<Link to={`lessons/${slug}`} className={`${styles['card']} ${active && styles['active']}`}>
+		<Link
+			to={`lessons/${slug}`}
+			className={`${styles['card']} ${!isPast(availableAt) && styles['locked']} ${
+				active && styles['active']
+			}`}
+		>
 			<span>{getFormattedData}</span>
 
 			<div>

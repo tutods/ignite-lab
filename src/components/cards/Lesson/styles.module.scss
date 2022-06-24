@@ -33,7 +33,7 @@
 
 	&.active {
 		div:first-of-type {
-			@apply bg-green-500 border-green-500 text-white;
+			@apply relative bg-green-500 border-green-500 text-white;
 
 
 			header {
@@ -45,6 +45,12 @@
 			strong {
 				@apply text-white;
 			}
+
+
 		}
+	}
+
+	&.locked {
+		@apply pointer-events-none;
 	}
 }

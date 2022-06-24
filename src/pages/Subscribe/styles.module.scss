@@ -46,3 +46,19 @@
 		@apply outline outline-2 placeholder-red-500 outline-red-500 text-red-500;
 	}
 }
+
+.alert {
+	@apply flex flex-col my-4 px-3 py-2 rounded border-2 border-red-500 bg-red-200;
+
+	p {
+		@apply text-gray-900;
+
+		&:first-of-type {
+			@apply flex items-center gap-2;
+		}
+
+		&:nth-of-type(2) {
+			@apply text-sm;
+		}
+	}
+}
