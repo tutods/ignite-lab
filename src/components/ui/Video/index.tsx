@@ -1,3 +1,5 @@
+import '@vime/core/themes/default.css';
+import { DefaultUi, Player, Youtube } from '@vime/react';
 import { Button } from 'components/Button';
 import { InfoCard } from 'components/cards/Info';
 import { TeacherAvatar } from 'components/TeacherAvatar';
@@ -8,7 +10,12 @@ const Video = () => {
 	return (
 		<section className={styles['container']}>
 			<div>
-				<div></div>
+				<div>
+					<Player>
+						<Youtube videoId={'SO4-izct7Mc'} />
+						<DefaultUi />
+					</Player>
+				</div>
 			</div>
 
 			<article className={styles['content']}>
