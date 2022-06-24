@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import { LessonCard } from 'components/cards/Lesson';
+import { useParams } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const GET_LESSONS_QUERY = gql`
@@ -25,6 +26,8 @@ type GetLessonsResponse = {
 };
 
 const Sidebar = () => {
+	const { slug } = useParams<{ slug: string }>();
+
 	const { data } = useQuery<GetLessonsResponse>(GET_LESSONS_QUERY);
 
 	return (
@@ -39,6 +42,7 @@ const Sidebar = () => {
 						title={lesson.title}
 						slug={lesson.slug}
 						availableAt={new Date(lesson.availableAt)}
+						active={lesson.slug === slug}
 					/>
 				))}
 			</section>

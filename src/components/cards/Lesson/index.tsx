@@ -3,15 +3,17 @@ import { format, isPast } from 'date-fns';
 import { CheckCircle, Lock } from 'phosphor-react';
 import styles from './styles.module.scss';
 import ptPT from 'date-fns/locale/pt';
+import { Link } from 'react-router-dom';
 
 type Props = {
 	title: string;
 	slug: string;
 	type: 'class' | 'live';
 	availableAt: Date;
+	active?: boolean;
 };
 
-const LessonCard = ({ title, slug, type, availableAt }: Props) => {
+const LessonCard = ({ title, slug, type, availableAt, active = false }: Props) => {
 	const getAvailabilityContent = isPast(availableAt) ? (
 		<span>
 			<CheckCircle size={20} />
@@ -29,18 +31,18 @@ const LessonCard = ({ title, slug, type, availableAt }: Props) => {
 	});
 
 	return (
-		<a href={`lesson/${slug}`} className={styles['card']}>
+		<Link to={`lessons/${slug}`} className={`${styles['card']} ${active && styles['active']}`}>
 			<span>{getFormattedData}</span>
 
 			<div>
 				<header>
 					{getAvailabilityContent}
 
-					<Badge type={type} />
+					<Badge active={active} type={type} />
 				</header>
 				<strong>{title}</strong>
 			</div>
-		</a>
+		</Link>
 	);
 };
 

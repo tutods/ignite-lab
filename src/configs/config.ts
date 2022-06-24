@@ -1,4 +1,4 @@
-import { ConfigType } from '../@types/Config';
+import { ConfigType } from '../types/Config';
 
 const config: ConfigType = {
 	api: {

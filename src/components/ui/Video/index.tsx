@@ -1,3 +1,5 @@
+import { gql, useQuery } from '@apollo/client';
+import { Lesson } from 'types/Lesson';
 import '@vime/core/themes/default.css';
 import { DefaultUi, Player, Youtube } from '@vime/react';
 import { Button } from 'components/Button';
@@ -6,13 +8,40 @@ import { TeacherAvatar } from 'components/TeacherAvatar';
 import { DiscordLogo, FileArrowDown, Image, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
 
-const Video = () => {
+const GET_LESSON_BY_SLUG = gql`
+	query GetLessonBySlug($slug: String) {
+		lesson(where: { slug: $slug }) {
+			title
+			videoId
+			description
+			teacher {
+				bio
+				avatarURL
+				name
+			}
+		}
+	}
+`;
+
+type Props = {
+	lessonSlug: string;
+};
+
+const Video = ({ lessonSlug }: Props) => {
+	const { data } = useQuery<{ lesson: Lesson }>(GET_LESSON_BY_SLUG, {
+		variables: { slug: lessonSlug }
+	});
+
+	if (!data || !data?.lesson) {
+		return <div className={'flex-1'}>Loading...</div>;
+	}
+
 	return (
 		<section className={styles['container']}>
 			<div>
 				<div>
 					<Player>
-						<Youtube videoId={'SO4-izct7Mc'} />
+						<Youtube videoId={data.lesson.videoId} />
 						<DefaultUi />
 					</Player>
 				</div>
@@ -21,20 +50,14 @@ const Video = () => {
 			<article className={styles['content']}>
 				<section>
 					<div>
-						<h1>Aula 01 - Abertura do Ignite Lab</h1>
-						<p>
-							Nessa aula vamos dar início ao projeto criando a estrutura base da
-							aplicação utilizando ReactJS, Vite e TailwindCSS. Vamos também realizar
-							o setup do nosso projeto no GraphCMS criando as entidades da aplicação e
-							integrando a API GraphQL gerada pela plataforma no nosso front-end
-							utilizando Apollo Client.
-						</p>
+						<h1>{data?.lesson.title}</h1>
+						<p>{data?.lesson.description}</p>
 
 						<TeacherAvatar
 							className={'mt-6'}
-							avatar={'https://github.com/tutods.png'}
-							name={'Daniel Sousa'}
-							description={'Frontend Developer at xgeeks'}
+							avatar={data?.lesson.teacher.avatarURL}
+							name={data?.lesson.teacher.name}
+							description={data?.lesson.teacher.bio}
 						/>
 					</div>
 					<div>

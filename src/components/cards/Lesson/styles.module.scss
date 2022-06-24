@@ -30,4 +30,21 @@
 			@apply border-green-500;
 		}
 	}
+
+	&.active {
+		div:first-of-type {
+			@apply bg-green-500 border-green-500 text-white;
+
+
+			header {
+				&>span:first-of-type {
+					@apply text-white;
+				}
+			}
+
+			strong {
+				@apply text-white;
+			}
+		}
+	}
 }
