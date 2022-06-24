@@ -7,6 +7,7 @@ import { InfoCard } from 'components/cards/Info';
 import { TeacherAvatar } from 'components/TeacherAvatar';
 import { DiscordLogo, FileArrowDown, Image, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
+import { useEffect, useState } from 'react';
 
 const GET_LESSON_BY_SLUG = gql`
 	query GetLessonBySlug($slug: String) {
@@ -32,7 +33,7 @@ const Video = ({ lessonSlug }: Props) => {
 		variables: { slug: lessonSlug }
 	});
 
-	if (!data || !data?.lesson) {
+	if (!data || !data.lesson) {
 		return <div className={'flex-1'}>Loading...</div>;
 	}
 
@@ -41,7 +42,7 @@ const Video = ({ lessonSlug }: Props) => {
 			<div>
 				<div>
 					<Player>
-						<Youtube videoId={data.lesson.videoId} />
+						<Youtube videoId={data.lesson.videoId} key={data.lesson.videoId} />
 						<DefaultUi />
 					</Player>
 				</div>
@@ -50,14 +51,14 @@ const Video = ({ lessonSlug }: Props) => {
 			<article className={styles['content']}>
 				<section>
 					<div>
-						<h1>{data?.lesson.title}</h1>
-						<p>{data?.lesson.description}</p>
+						<h1>{data.lesson.title}</h1>
+						<p>{data.lesson.description}</p>
 
 						<TeacherAvatar
 							className={'mt-6'}
-							avatar={data?.lesson.teacher.avatarURL}
-							name={data?.lesson.teacher.name}
-							description={data?.lesson.teacher.bio}
+							avatar={data.lesson.teacher.avatarURL}
+							name={data.lesson.teacher.name}
+							description={data.lesson.teacher.bio}
 						/>
 					</div>
 					<div>
