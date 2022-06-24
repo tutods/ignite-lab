@@ -1,6 +1,7 @@
 import { Button } from 'components/Button';
+import { InfoCard } from 'components/cards/Info';
 import { TeacherAvatar } from 'components/TeacherAvatar';
-import { DiscordLogo, Lightning } from 'phosphor-react';
+import { DiscordLogo, FileArrowDown, Image, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
 
 const Video = () => {
@@ -43,7 +44,23 @@ const Video = () => {
 					</div>
 				</section>
 				<section>
-					
+					<InfoCard
+						link={''}
+						icon={<FileArrowDown size={39} />}
+						title={'Material Complementar'}
+						description={
+							'Acesse o material complementar para acelerar o seu desenvolvimento'
+						}
+					/>
+
+					<InfoCard
+						link={''}
+						icon={<Image size={39} />}
+						title={'Wallpapers exclusivos'}
+						description={
+							'Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina'
+						}
+					/>
 				</section>
 			</article>
 		</section>

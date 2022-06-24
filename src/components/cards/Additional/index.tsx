@@ -1,5 +1,0 @@
-const AdditionalCard = () => {
-
-}
-
-export {AdditionalCard}
