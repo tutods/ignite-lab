@@ -10,6 +10,7 @@ import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
 import { isPast } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { isEmpty } from 'utils/isEmpty';
 
 const GET_LESSON_BY_SLUG = gql`
 	query GetLessonBySlug($slug: String) {
@@ -40,7 +41,9 @@ const Video = ({ lessonSlug }: Props) => {
 
 	if (loading) {
 		return <div className={'flex-1'}>Loading...</div>;
-	} else if (data && data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
+	}
+
+	if (data && data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
 		navigate(-1);
 	}
 
