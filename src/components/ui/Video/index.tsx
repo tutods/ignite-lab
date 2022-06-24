@@ -7,9 +7,9 @@ import { InfoCard } from 'components/cards/Info';
 import { TeacherAvatar } from 'components/TeacherAvatar';
 import { DiscordLogo, FileArrowDown, Image, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { isPast } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { isEmpty } from 'utils/isEmpty';
 
 const GET_LESSON_BY_SLUG = gql`
@@ -41,10 +41,6 @@ const Video = ({ lessonSlug }: Props) => {
 
 	if (loading || !data || !data.lesson) {
 		return <div className={'flex-1'}>Loading...</div>;
-	}
-
-	if (data && data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
-		navigate(-1);
 	}
 
 	return (

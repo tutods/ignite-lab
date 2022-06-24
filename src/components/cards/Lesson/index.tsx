@@ -3,7 +3,8 @@ import { format, isPast } from 'date-fns';
 import { CheckCircle, Lock } from 'phosphor-react';
 import styles from './styles.module.scss';
 import ptPT from 'date-fns/locale/pt';
-import { Link } from 'react-router-dom';
+import { Link, LinkProps } from 'react-router-dom';
+import { HTMLAttributes, ReactNode } from 'react';
 
 type Props = {
 	title: string;
@@ -11,6 +12,26 @@ type Props = {
 	type: 'class' | 'live';
 	availableAt: Date;
 	active?: boolean;
+};
+
+/**
+ * Inner Component to use Link or a div as root
+ */
+const Content = ({
+	children,
+	availableAt,
+	slug,
+	...props
+}: { children: ReactNode; availableAt: Date; slug: string } & Partial<
+	HTMLAttributes<HTMLElement>
+>) => {
+	return isPast(availableAt) ? (
+		<Link to={`lessons/${slug}`} {...props}>
+			{children}
+		</Link>
+	) : (
+		<div {...props}>{children}</div>
+	);
 };
 
 const LessonCard = ({ title, slug, type, availableAt, active = false }: Props) => {
@@ -31,8 +52,9 @@ const LessonCard = ({ title, slug, type, availableAt, active = false }: Props) =
 	});
 
 	return (
-		<Link
-			to={`lessons/${slug}`}
+		<Content
+			availableAt={availableAt}
+			slug={slug}
 			className={`${styles['card']} ${!isPast(availableAt) && styles['locked']} ${
 				active && styles['active']
 			}`}
@@ -47,7 +69,7 @@ const LessonCard = ({ title, slug, type, availableAt, active = false }: Props) =
 				</header>
 				<strong>{title}</strong>
 			</div>
-		</Link>
+		</Content>
 	);
 };
 

@@ -1,26 +1,22 @@
 import { gql, useMutation } from '@apollo/client';
 import { Button } from 'components/Button';
 import { IgniteLabLogo } from 'components/logos/IgniteLabLogo';
+import { CREATE_SUBSCRIBER, PUBLISH_SUBSCRIBER } from 'graphql/mutations/subscriber';
 import { Warning } from 'phosphor-react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isEmpty } from 'utils/isEmpty';
 import styles from './styles.module.scss';
 
-const CREATE_SUBSCRIBER = gql`
-	mutation CreateSubscriber($name: String!, $email: String!) {
-		createSubscriber(data: { name: $name, email: $email }) {
-			id
-			name
-			email
-		}
-	}
-`;
-
 const Subscribe = () => {
 	const navigate = useNavigate();
 
-	const [addSubscription, { loading, error }] = useMutation(CREATE_SUBSCRIBER);
+	const [addSubscription, { loading, error }] = useMutation<{
+		createSubscriber: { id: string; name: string; email: string };
+	}>(CREATE_SUBSCRIBER);
+	const [publishSubscriber, { loading: publishLoading, error: publishError }] = useMutation<{
+		publishSubscriber: { id: string };
+	}>(PUBLISH_SUBSCRIBER);
 
 	const [formData, setFormData] = useState<{ name: string; email: string }>({
 		name: '',
@@ -56,7 +52,6 @@ const Subscribe = () => {
 		 */
 		if (isEmpty(formData.name)) {
 			setFormErrors((prevState) => ({ ...prevState, name: true }));
-			console.log(!formData.name);
 			return;
 		}
 
@@ -71,14 +66,21 @@ const Subscribe = () => {
 			return;
 		}
 
-		await addSubscription({
+		const { data } = await addSubscription({
 			variables: {
 				name: formData.name,
 				email: formData.email
 			}
 		});
 
-		if (!error) {
+		const { data: publishData } = await publishSubscriber({
+			variables: {
+				email: data?.createSubscriber.email
+			}
+		});
+		
+
+		if (!error && !publishError && publishData?.publishSubscriber.id) {
 			setFormErrors({ email: false, name: false });
 			navigate('/event');
 		}
@@ -104,18 +106,18 @@ const Subscribe = () => {
 				<div className={styles['right-column']}>
 					<h2>Inscreva-se gratuitamente</h2>
 
-					{error && (
+					{(error || publishError) && (
 						<div className={styles['alert']}>
 							<p>
 								<Warning weight={'bold'} size={18} />
 								<strong>Ocorreu um erro!</strong>
 							</p>
 
-							<p>{error.message}</p>
+							<p>{error ? error.message : publishError?.message}</p>
 						</div>
 					)}
 
-					{loading ? (
+					{loading || publishLoading ? (
 						<div>Loading..</div>
 					) : (
 						<form onSubmit={handleSubscription}>
