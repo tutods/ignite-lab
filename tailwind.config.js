@@ -30,6 +30,9 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: '"Roboto", sans-serif'
+			},
+			backgroundImage: {
+				'blurred-pattern': "url('/media/background.png')"
 			}
 		}
 	},

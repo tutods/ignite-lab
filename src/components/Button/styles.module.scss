@@ -7,6 +7,10 @@
 		&:hover {
 			@apply bg-green-700;
 		}
+
+		&:focus {
+			@apply outline outline-2 outline-green-700;
+		}
 	}
 
 	&.outlined {
@@ -14,6 +18,10 @@
 
 		&:hover {
 			@apply bg-blue-500 text-gray-900;
+		}
+
+		&:focus {
+			@apply outline outline-2 outline-blue-500;
 		}
 	}
 }
