@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 
-type Props = {
+type Props = Partial<ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>> & {
 	children: ReactNode;
 	icon?: ReactNode;
 	link?: string;
@@ -10,13 +10,22 @@ type Props = {
 	className?: string;
 };
 
-const Button = ({ children, icon, link, onClick, variant = 'primary', className }: Props) => {
+const Button = ({
+	children,
+	icon,
+	link,
+	onClick,
+	variant = 'primary',
+	className,
+	...props
+}: Props) => {
 	const Tag = link ? 'a' : 'button';
-	const properties = link ? { href: link } : { onClick };
+	const options = link ? { href: link } : { onClick };
 
 	return (
 		<Tag
-			{...properties}
+			{...props}
+			{...options}
 			className={`${styles['button']} ${styles[variant]} ${className ?? ''}`}
 		>
 			{icon}

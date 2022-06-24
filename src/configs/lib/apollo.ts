@@ -3,7 +3,10 @@ import { config } from '../config';
 
 const client = new ApolloClient({
 	uri: config.api.url,
-	cache: new InMemoryCache(),
+	headers: {
+		Authorization: `Bearer ${config.api.token}`
+	},
+	cache: new InMemoryCache()
 });
 
 export { client };

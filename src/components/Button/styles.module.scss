@@ -24,4 +24,8 @@
 			@apply outline outline-2 outline-blue-500;
 		}
 	}
+
+	&:disabled {
+		@apply opacity-50 cursor-not-allowed;
+	}
 }

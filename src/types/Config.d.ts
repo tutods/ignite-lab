@@ -1,7 +1,8 @@
 type ConfigType = {
 	api: {
-		url: string
-	}
+		url: string;
+		token: string;
+	};
 };
 
 export { ConfigType };
