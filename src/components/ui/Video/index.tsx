@@ -39,7 +39,7 @@ const Video = ({ lessonSlug }: Props) => {
 		variables: { slug: lessonSlug }
 	});
 
-	if (loading) {
+	if (loading || !data || !data.lesson) {
 		return <div className={'flex-1'}>Loading...</div>;
 	}
 
