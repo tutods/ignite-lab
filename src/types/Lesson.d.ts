@@ -9,6 +9,7 @@ type Lesson = {
 	videoId: string;
 	description: string;
 	teacher: Teacher;
+	availableAt?: Date;
 };
 
 export { Lesson };

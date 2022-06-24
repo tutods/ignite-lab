@@ -8,12 +8,15 @@ import { TeacherAvatar } from 'components/TeacherAvatar';
 import { DiscordLogo, FileArrowDown, Image, Lightning } from 'phosphor-react';
 import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
+import { isPast } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 const GET_LESSON_BY_SLUG = gql`
 	query GetLessonBySlug($slug: String) {
 		lesson(where: { slug: $slug }) {
 			title
 			videoId
+			availableAt
 			description
 			teacher {
 				bio
@@ -29,12 +32,18 @@ type Props = {
 };
 
 const Video = ({ lessonSlug }: Props) => {
+	const navigate = useNavigate();
+
 	const { data } = useQuery<{ lesson: Lesson }>(GET_LESSON_BY_SLUG, {
 		variables: { slug: lessonSlug }
 	});
 
 	if (!data || !data.lesson) {
 		return <div className={'flex-1'}>Loading...</div>;
+	}
+
+	if (data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
+		return navigate(-1);
 	}
 
 	return (
