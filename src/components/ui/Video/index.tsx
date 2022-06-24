@@ -43,7 +43,8 @@ const Video = ({ lessonSlug }: Props) => {
 	}
 
 	if (data.lesson.availableAt && !isPast(data.lesson.availableAt)) {
-		return navigate(-1);
+		navigate(-1);
+		return;
 	}
 
 	return (
