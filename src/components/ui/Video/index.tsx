@@ -86,6 +86,7 @@ const Video = ({lessonSlug, event}: Props) => {
                         event.additionalFiles && (
                             <InfoCard
                                 link={event.additionalFiles}
+                                target={'_blank'}
                                 icon={<FileArrowDown size={39}/>}
                                 title={'Material Complementar'}
                                 description={
@@ -98,6 +99,7 @@ const Video = ({lessonSlug, event}: Props) => {
                         event.wallpapers && (
                             <InfoCard
                                 link={event.wallpapers}
+                                target={'_blank'}
                                 icon={<Image size={39}/>}
                                 title={'Wallpapers exclusivos'}
                                 description={
