@@ -2,7 +2,6 @@ import { format, isSameMonth } from 'date-fns';
 import ptPT from 'date-fns/locale/pt';
 
 const returnDate = (value: Date | string) => {
-	console.log(typeof value === 'string');
 	if (typeof value === 'string') {
 		return new Date(value);
 	}

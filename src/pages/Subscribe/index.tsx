@@ -10,6 +10,7 @@ import { EventDetailsResponse } from 'types/EventDetails';
 import { CreateSubscriberResponse, PublishSubscriberResponse } from 'types/Subscriber';
 import { getDurationDate } from 'utils/durationDate';
 import { isEmpty } from 'utils/isEmpty';
+import { replaceArray } from 'utils/replaceArray';
 import styles from './styles.module.scss';
 
 const Subscribe = () => {
@@ -95,7 +96,7 @@ const Subscribe = () => {
 		}
 	};
 
-	if (!data || loading) {
+	if (!data || eventLoading) {
 		return <div>Loading</div>;
 	}
 
@@ -107,7 +108,8 @@ const Subscribe = () => {
 
 					<h1
 						dangerouslySetInnerHTML={{
-							__html: data.eventDetails.headline.html.replaceArray(
+							__html: replaceArray(
+								data.eventDetails.headline.html,
 								['<p>', '</p>'],
 								''
 							)
@@ -115,7 +117,8 @@ const Subscribe = () => {
 					/>
 					<p
 						dangerouslySetInnerHTML={{
-							__html: data.eventDetails.description.html.replaceArray(
+							__html: replaceArray(
+								data.eventDetails.description.html,
 								['<p>', '</p>'],
 								''
 							)
