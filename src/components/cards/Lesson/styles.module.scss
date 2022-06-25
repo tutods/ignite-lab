@@ -1,56 +1,60 @@
 .card {
-	@apply transition-colors ease-in-out;
+  @apply transition-colors ease-in-out;
 
-	span:first-of-type {
-		@apply text-gray-300;
-	}
+  span:first-of-type {
+    @apply text-gray-300;
+  }
 
-	div:first-of-type {
-		@apply rounded border border-gray-500 p-4 mt-2;
+  div:first-of-type {
+    @apply rounded border border-gray-500 p-4 mt-2;
 
-		header {
-			@apply flex items-center justify-between gap-4 pb-4;
+    header {
+      @apply flex items-center justify-between gap-4 pb-4;
 
-			&>span:first-of-type {
-				@apply flex gap-2 items-center text-sm text-blue-500 font-medium;
+      & > span:first-of-type {
+        @apply flex gap-2 items-center text-sm text-blue-500 font-medium;
 
-				&.locked {
-					@apply text-orange-500
-				}
-			}
-		}
+        &.locked {
+          @apply text-orange-500
+        }
+      }
+    }
 
-		strong {
-			@apply block text-gray-200;
-		}
-	}
+    strong {
+      @apply block text-gray-200;
+    }
+  }
 
-	&:hover {
-		div:first-of-type {
-			@apply border-green-500;
-		}
-	}
+  &:hover {
+    div:first-of-type {
+      @apply border-green-500;
+    }
+  }
 
-	&.active {
-		div:first-of-type {
-			@apply relative bg-green-500 border-green-500 text-white;
+  &.active {
+    div:first-of-type {
+      @apply relative bg-green-500 border-green-500 text-white relative;
+
+      &::before {
+        content: '';
+        @apply rounded absolute left-0 top-[50%] translate-y-[-10px] translate-x-[-50%] w-4 h-4 bg-green-500 z-[100] rotate-45;
+      }
+
+      header {
+        & > span:first-of-type {
+          @apply text-white;
+        }
+      }
+
+      strong {
+        @apply text-white;
+      }
 
 
-			header {
-				&>span:first-of-type {
-					@apply text-white;
-				}
-			}
+    }
+  }
 
-			strong {
-				@apply text-white;
-			}
-
-
-		}
-	}
-
-	&.locked {
-		@apply pointer-events-none;
-	}
+  &.locked {
+    @apply pointer-events-none;
+  }
 }
