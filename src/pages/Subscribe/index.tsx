@@ -73,12 +73,13 @@ const Subscribe = () => {
 			}
 		});
 
+		console.log(data);
+
 		const { data: publishData } = await publishSubscriber({
 			variables: {
 				email: data?.createSubscriber.email
 			}
 		});
-		
 
 		if (!error && !publishError && publishData?.publishSubscriber.id) {
 			setFormErrors({ email: false, name: false });
