@@ -1,19 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { LessonCard } from 'components/cards/Lesson';
+import { GET_LESSONS_QUERY } from 'graphql/queries/lessons';
 import { useParams } from 'react-router-dom';
 import styles from './styles.module.scss';
-
-const GET_LESSONS_QUERY = gql`
-	query {
-		lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
-			id
-			title
-			slug
-			lessonType
-			availableAt
-		}
-	}
-`;
 
 type GetLessonsResponse = {
 	lessons: {

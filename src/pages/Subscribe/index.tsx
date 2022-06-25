@@ -2,7 +2,7 @@ import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button } from 'components/Button';
 import { IgniteLabLogo } from 'components/logos/IgniteLabLogo';
 import { CREATE_SUBSCRIBER, PUBLISH_SUBSCRIBER } from 'graphql/mutations/subscriber';
-import { GET_EVENT_DETAILS } from 'graphql/querys/eventDetails';
+import { GET_EVENT_DETAILS } from 'graphql/queries/eventDetails';
 import { Calendar, CalendarCheck, CalendarX, Warning } from 'phosphor-react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

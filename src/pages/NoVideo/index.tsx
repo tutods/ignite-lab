@@ -1,12 +1,11 @@
 import styles from './styles.module.scss';
 import { useQuery } from '@apollo/client';
 import { IgniteLabLogo } from 'components/logos/IgniteLabLogo';
-import { GET_EVENT_DETAILS } from 'graphql/querys/eventDetails';
+import { GET_EVENT_DETAILS } from 'graphql/queries/eventDetails';
 import { CalendarCheck, Warning } from 'phosphor-react';
 import { EventDetailsResponse } from 'types/EventDetails';
 import { getDurationDate } from 'utils/durationDate';
 import { replaceArray } from 'utils/replaceArray';
-import { Button } from 'components/Button';
 
 type Props = {
 	className?: string;
