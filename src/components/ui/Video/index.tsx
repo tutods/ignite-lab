@@ -6,14 +6,15 @@ import {TeacherAvatar} from 'components/TeacherAvatar';
 import {DiscordLogo, FileArrowDown, Image, Lightning} from 'phosphor-react';
 import styles from './styles.module.scss';
 import {useNavigate} from 'react-router-dom';
-import {useGetLessonBySlugQuery} from "graphql/generated";
+import {EventDetails, useGetLessonBySlugQuery} from "graphql/generated";
 import {isPast} from "date-fns";
 
 type Props = {
     lessonSlug: string;
+    event: EventDetails
 };
 
-const Video = ({lessonSlug}: Props) => {
+const Video = ({lessonSlug, event}: Props) => {
     const navigate = useNavigate();
 
     const {data, loading} = useGetLessonBySlugQuery({
@@ -66,33 +67,45 @@ const Video = ({lessonSlug}: Props) => {
                         <Button link={'teste'} icon={<DiscordLogo size={24}/>}>
                             Comunidade do Discord
                         </Button>
-                        <Button
-                            link={'desafio'}
-                            icon={<Lightning size={24}/>}
-                            variant={'outlined'}
-                        >
-                            Acesse o desafio
-                        </Button>
+
+                        {
+                            data.lesson.challenge && (
+                                <Button
+                                    link={data.lesson.challenge.url}
+                                    icon={<Lightning size={24}/>}
+                                    variant={'outlined'}
+                                >
+                                    Acesse o desafio
+                                </Button>
+                            )
+                        }
                     </div>
                 </section>
                 <section>
-                    <InfoCard
-                        link={''}
-                        icon={<FileArrowDown size={39}/>}
-                        title={'Material Complementar'}
-                        description={
-                            'Acesse o material complementar para acelerar o seu desenvolvimento'
-                        }
-                    />
-
-                    <InfoCard
-                        link={''}
-                        icon={<Image size={39}/>}
-                        title={'Wallpapers exclusivos'}
-                        description={
-                            'Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina'
-                        }
-                    />
+                    {
+                        event.additionalFiles && (
+                            <InfoCard
+                                link={event.additionalFiles}
+                                icon={<FileArrowDown size={39}/>}
+                                title={'Material Complementar'}
+                                description={
+                                    'Acesse o material complementar para acelerar o seu desenvolvimento'
+                                }
+                            />
+                        )
+                    }
+                    {
+                        event.wallpapers && (
+                            <InfoCard
+                                link={event.wallpapers}
+                                icon={<Image size={39}/>}
+                                title={'Wallpapers exclusivos'}
+                                description={
+                                    'Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina'
+                                }
+                            />
+                        )
+                    }
                 </section>
             </article>
         </section>

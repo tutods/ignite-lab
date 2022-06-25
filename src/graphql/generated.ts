@@ -6406,14 +6406,14 @@ export type PublishSubscriberMutation = { __typename?: 'Mutation', publishSubscr
 export type GetEventDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetEventDetailsQuery = { __typename?: 'Query', eventDetails?: { __typename?: 'EventDetails', id: string, title: string, startDate: any, endDate: any, wallpapers?: string | null, discordCommunity?: string | null, headline: { __typename?: 'RichText', html: string }, description: { __typename?: 'RichText', html: string } } | null };
+export type GetEventDetailsQuery = { __typename?: 'Query', eventDetails?: { __typename?: 'EventDetails', id: string, title: string, startDate: any, endDate: any, wallpapers?: string | null, discordCommunity?: string | null, additionalFiles?: string | null, headline: { __typename?: 'RichText', html: string }, description: { __typename?: 'RichText', html: string } } | null };
 
 export type GetLessonBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, availableAt?: any | null, description?: string | null, teacher?: { __typename?: 'Teacher', bio: string, avatarURL: string, name: string } | null } | null };
+export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, availableAt?: any | null, description?: string | null, teacher?: { __typename?: 'Teacher', bio: string, avatarURL: string, name: string } | null, challenge?: { __typename?: 'Challenge', url: string } | null } | null };
 
 export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6499,6 +6499,7 @@ export const GetEventDetailsDocument = gql`
     endDate
     wallpapers
     discordCommunity
+    additionalFiles
     headline {
       html
     }
@@ -6546,6 +6547,9 @@ export const GetLessonBySlugDocument = gql`
       bio
       avatarURL
       name
+    }
+    challenge {
+      url
     }
   }
 }

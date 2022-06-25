@@ -3,22 +3,14 @@ import {IgniteLabLogo} from 'components/logos/IgniteLabLogo';
 import {CalendarCheck} from 'phosphor-react';
 import {getDurationDate} from 'utils/durationDate';
 import {replaceArray} from 'utils/replaceArray';
-import {useGetEventDetailsQuery} from "graphql/generated";
+import {EventDetails} from "graphql/generated";
 
 type Props = {
+    event: EventDetails
     className?: string;
 };
 
-const NoVideo = ({className}: Props) => {
-    /**
-     * Queries
-     */
-    const {data, loading} = useGetEventDetailsQuery();
-
-    if (!data || !data.eventDetails || loading) {
-        return <div>Loading</div>;
-    }
-
+const NoVideo = ({className, event}: Props) => {
     return (
         <main className={`${styles['container']} ${className ?? ''}`}>
             <section>
@@ -28,7 +20,7 @@ const NoVideo = ({className}: Props) => {
                     <h1
                         dangerouslySetInnerHTML={{
                             __html: replaceArray(
-                                data.eventDetails.headline.html,
+                                event.headline.html,
                                 ['<p>', '</p>'],
                                 ''
                             )
@@ -37,7 +29,7 @@ const NoVideo = ({className}: Props) => {
                     <p
                         dangerouslySetInnerHTML={{
                             __html: replaceArray(
-                                data.eventDetails.description.html,
+                                event.description.html,
                                 ['<p>', '</p>'],
                                 ''
                             )
@@ -48,8 +40,8 @@ const NoVideo = ({className}: Props) => {
                         <CalendarCheck weight={'light'}/>
                         <span>
 							{getDurationDate(
-                                data.eventDetails.startDate,
-                                data.eventDetails.endDate
+                                event.startDate,
+                                event.endDate
                             )}
 						</span>
                     </div>

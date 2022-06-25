@@ -9,5 +9,8 @@ query GetLessonBySlug($slug: String) {
 			avatarURL
 			name
 		}
+		challenge {
+		    url
+		}
 	}
 }
