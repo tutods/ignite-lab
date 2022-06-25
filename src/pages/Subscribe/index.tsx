@@ -1,22 +1,32 @@
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button } from 'components/Button';
 import { IgniteLabLogo } from 'components/logos/IgniteLabLogo';
 import { CREATE_SUBSCRIBER, PUBLISH_SUBSCRIBER } from 'graphql/mutations/subscriber';
-import { Warning } from 'phosphor-react';
+import { GET_EVENT_DETAILS } from 'graphql/querys/eventDetails';
+import { Calendar, CalendarCheck, CalendarX, Warning } from 'phosphor-react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { EventDetailsResponse } from 'types/EventDetails';
+import { CreateSubscriberResponse, PublishSubscriberResponse } from 'types/Subscriber';
+import { getDurationDate } from 'utils/durationDate';
 import { isEmpty } from 'utils/isEmpty';
 import styles from './styles.module.scss';
 
 const Subscribe = () => {
 	const navigate = useNavigate();
 
-	const [addSubscription, { loading, error }] = useMutation<{
-		createSubscriber: { id: string; name: string; email: string };
-	}>(CREATE_SUBSCRIBER);
-	const [publishSubscriber, { loading: publishLoading, error: publishError }] = useMutation<{
-		publishSubscriber: { id: string };
-	}>(PUBLISH_SUBSCRIBER);
+	/**
+	 * Queries
+	 */
+	const { data, loading: eventLoading } = useQuery<EventDetailsResponse>(GET_EVENT_DETAILS);
+
+	/**
+	 * Mutations
+	 */
+	const [addSubscription, { loading, error }] =
+		useMutation<CreateSubscriberResponse>(CREATE_SUBSCRIBER);
+	const [publishSubscriber, { loading: publishLoading, error: publishError }] =
+		useMutation<PublishSubscriberResponse>(PUBLISH_SUBSCRIBER);
 
 	const [formData, setFormData] = useState<{ name: string; email: string }>({
 		name: '',
@@ -73,19 +83,21 @@ const Subscribe = () => {
 			}
 		});
 
-		console.log(data);
-
 		const { data: publishData } = await publishSubscriber({
 			variables: {
 				email: data?.createSubscriber.email
 			}
 		});
 
-		if (!error && !publishError && publishData?.publishSubscriber.id) {
+		if ((!error || !publishError) && publishData?.publishSubscriber.id) {
 			setFormErrors({ email: false, name: false });
 			navigate('/event');
 		}
 	};
+
+	if (!data || loading) {
+		return <div>Loading</div>;
+	}
 
 	return (
 		<main className={`${styles['container']}`}>
@@ -93,15 +105,32 @@ const Subscribe = () => {
 				<div className={styles['left-column']}>
 					<IgniteLabLogo />
 
-					<h1>
-						Construa uma <strong>aplicação completa</strong>, do zero, com{' '}
-						<strong>React</strong>
-					</h1>
-					<p>
-						Em apenas uma semana você vai dominar na prática uma das tecnologias mais
-						utilizadas e com alta demanda para acessar as melhores oportunidades do
-						mercado.
-					</p>
+					<h1
+						dangerouslySetInnerHTML={{
+							__html: data.eventDetails.headline.html.replaceArray(
+								['<p>', '</p>'],
+								''
+							)
+						}}
+					/>
+					<p
+						dangerouslySetInnerHTML={{
+							__html: data.eventDetails.description.html.replaceArray(
+								['<p>', '</p>'],
+								''
+							)
+						}}
+					/>
+
+					<div className={styles['icon-container']}>
+						<CalendarCheck weight={'light'} />
+						<span>
+							{getDurationDate(
+								data.eventDetails.startDate,
+								data.eventDetails.endDate
+							)}
+						</span>
+					</div>
 				</div>
 
 				<div className={styles['right-column']}>

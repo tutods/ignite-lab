@@ -62,3 +62,15 @@
 		}
 	}
 }
+
+.icon-container {
+	@apply flex items-center gap-4 py-2 mt-4;
+
+	svg {
+		@apply w-12 h-12 rounded-full p-2 bg-green-500 text-white;
+	}
+
+	span {
+		@apply block max-w-[100px] text-white font-bold leading-relaxed;
+	}
+}
