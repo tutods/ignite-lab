@@ -1,4 +1,4 @@
-import { format, isSameMonth } from 'date-fns';
+import {format, isSameMonth} from 'date-fns';
 import ptPT from 'date-fns/locale/pt';
 
 const returnDate = (value: Date | string) => {
@@ -24,4 +24,4 @@ const getDurationDate = (start: Date | string, end: Date | string): string => {
 		: `De ${startDay} de ${startMonth} a ${endDay} de ${endMonth}`;
 };
 
-export { getDurationDate };
+export {returnDate, getDurationDate};

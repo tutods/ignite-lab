@@ -1,0 +1,16 @@
+query GetEventDetails  {
+	eventDetails(where: { title: "Ignite Lab" }) {
+		id
+		title
+		startDate
+		endDate
+		wallpapers
+		discordCommunity
+		headline {
+			html
+		}
+		description {
+			html
+		}
+	}
+}
