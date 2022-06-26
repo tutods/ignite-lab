@@ -19,7 +19,7 @@
 - [ ] Implement Loading screens;
 - [x] **ESLint** configuration;
 - [x] Add **Husky** and **Lint Staged** to run on each commit;
-- [ ] Add **Commit Lint** to follow the guidelines on commit messages;
+- [x] Add **Commit Lint** to follow the guidelines on commit messages;
 
 ## 💾 Environment Variables
 
