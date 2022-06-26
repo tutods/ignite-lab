@@ -5,12 +5,12 @@
 
 ## 🛠 Skills
 
-<img alt="react" src="https://img.shields.io/badge/react-1E4174?style=for-the-badge&logo=react&logoColor=white" />
-<img alt="graphql" src="https://img.shields.io/badge/graphql-1E4174?style=for-the-badge&logo=graphql&logoColor=white" />
-<img alt="apollo client" src="https://img.shields.io/badge/apollo%20client-1E4174?style=for-the-badge&logo=apollographql&logoColor=white" />
-<img alt="sass" src="https://img.shields.io/badge/sass-1E4174?style=for-the-badge&logo=sass&logoColor=white" />
-<img alt="tailwind css" src="https://img.shields.io/badge/tailwind%20css-1E4174?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-<img alt="vite" src="https://img.shields.io/badge/vite-1E4174?style=for-the-badge&logo=vite&logoColor=white" />
+<img alt="react" src="https://img.shields.io/badge/react-1E4174?style=for-the-badge&logo=react&logoColor=white" /> <img alt="graphql" 
+src="https://img.shields.io/badge/graphql-1E4174?style=for-the-badge&logo=graphql&logoColor=white" /> <img alt="apollo client" src="https://img.
+shields.io/badge/apollo%20client-1E4174?style=for-the-badge&logo=apollographql&logoColor=white" /> <img alt="sass" src="https://img.shields.
+io/badge/sass-1E4174?style=for-the-badge&logo=sass&logoColor=white" /> <img alt="tailwind css" src="https://img.shields.
+io/badge/tailwind%20css-1E4174?style=for-the-badge&logo=tailwindcss&logoColor=white" /> <img alt="vite" src="https://img.shields.
+io/badge/vite-1E4174?style=for-the-badge&logo=vite&logoColor=white" />
 
 
 <br />
