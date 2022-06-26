@@ -18,6 +18,7 @@
 - [x] **Docker** files (`docker-compose.yaml` and `Dockerfile`) to run project inside Docker, but in development mode;
 - [ ] Implement Loading screens;
 - [ ] Make it responsive;
+- [ ] Use **React Hook Forms** with **Yup** to improve register form validations;
 - [x] **ESLint** configuration;
 - [x] Add **Husky** and **Lint Staged** to run on each commit;
 - [x] Add **Commit Lint** to follow the guidelines on commit messages;
