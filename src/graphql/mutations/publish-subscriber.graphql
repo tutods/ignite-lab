@@ -1,5 +1,5 @@
 mutation PublishSubscriber($email: String!) {
-	publishSubscriber(where: { email: $email }, to: PUBLISHED) {
-		id
-	}
+    publishSubscriber(where: { email: $email }, to: PUBLISHED) {
+        id
+    }
 }

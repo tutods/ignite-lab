@@ -1,5 +1,6 @@
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+
 import styles from './styles.module.scss';
-import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 
 type Props = Partial<ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>> & {
 	children: ReactNode;
@@ -26,7 +27,7 @@ const Button = ({
 		<Tag
 			{...props}
 			{...options}
-			className={`${styles['button']} ${styles[variant]} ${className ?? ''}`}
+			className={`${styles.button} ${styles[variant]} ${className ?? ''}`}
 		>
 			{icon}
 			{children}

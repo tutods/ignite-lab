@@ -4,12 +4,12 @@
 
 // Custom Body
 body {
-	@apply bg-gray-900 text-gray-100;
+  @apply bg-gray-900 text-gray-100;
 
-	-webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 a,
 button {
-	@apply cursor-pointer;
+  @apply cursor-pointer;
 }

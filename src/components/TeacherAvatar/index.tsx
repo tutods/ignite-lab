@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import styles from './styles.module.scss';
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 
 const TeacherAvatar = ({ avatar, name, description, className }: Props) => {
 	return (
-		<div className={`${styles['avatar']} ${className ?? ''}`}>
+		<div className={`${styles.avatar} ${className ?? ''}`}>
 			<img src={avatar} alt={name} />
 
 			<div>

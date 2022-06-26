@@ -1,11 +1,11 @@
 .sidebar {
-	@apply w-[348px] p-6 border-l border-gray-600 bg-gray-700;
+  @apply w-[348px] p-6 border-l border-gray-600 bg-gray-700;
 
-	&>span {
-		@apply block mb-6 pb-6 border-b border-gray-500 font-bold text-2xl;
-	}
+  & > span {
+    @apply block mb-6 pb-6 border-b border-gray-500 font-bold text-2xl;
+  }
 
-	&>section {
-		@apply flex flex-col gap-8;
-	}
+  & > section {
+    @apply flex flex-col gap-8;
+  }
 }

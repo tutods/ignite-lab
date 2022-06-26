@@ -1,8 +1,5 @@
 
-# Node Modules & Package.json
-package.json
-package-lock.json
-yarn.lock
+# .eslintrc.js
 
 # dependencies
 /node_modules
@@ -18,7 +15,6 @@ yarn.lock
 
 # production
 /build
-/dist
 
 # misc
 .DS_Store
@@ -37,5 +33,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-*.sass

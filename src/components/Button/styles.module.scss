@@ -1,31 +1,31 @@
 .button {
-	@apply inline-flex items-center justify-center gap-2 border border-transparent rounded p-4 text-sm font-bold uppercase transition-colors ease-in-out shadow-none;
+  @apply inline-flex items-center justify-center gap-2 border border-transparent rounded p-4 text-sm font-bold uppercase transition-colors ease-in-out shadow-none;
 
-	&.primary {
-		@apply bg-green-500 text-white;
+  &.primary {
+    @apply bg-green-500 text-white;
 
-		&:hover {
-			@apply bg-green-700;
-		}
+    &:hover {
+      @apply bg-green-700;
+    }
 
-		&:focus {
-			@apply outline outline-2 outline-green-700;
-		}
-	}
+    &:focus {
+      @apply outline outline-2 outline-green-700;
+    }
+  }
 
-	&.outlined {
-		@apply border-blue-500 text-blue-500;
+  &.outlined {
+    @apply border-blue-500 text-blue-500;
 
-		&:hover {
-			@apply bg-blue-500 text-gray-900;
-		}
+    &:hover {
+      @apply bg-blue-500 text-gray-900;
+    }
 
-		&:focus {
-			@apply outline outline-2 outline-blue-500;
-		}
-	}
+    &:focus {
+      @apply outline outline-2 outline-blue-500;
+    }
+  }
 
-	&:disabled {
-		@apply opacity-50 cursor-not-allowed;
-	}
+  &:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
 }

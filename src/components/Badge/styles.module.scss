@@ -1,12 +1,12 @@
 .badge {
 
-	@apply py-[2px] px-2 border border-green-300 text-white rounded text-xs font-bold uppercase;
+  @apply py-[2px] px-2 border border-green-300 text-white rounded text-xs font-bold uppercase;
 
-	&.live {
-		@apply text-green-300
-	}
+  &.live {
+    @apply text-green-300
+  }
 
-	&.selected {
-		@apply border-white text-white;
-	}
+  &.selected {
+    @apply border-white text-white;
+  }
 }

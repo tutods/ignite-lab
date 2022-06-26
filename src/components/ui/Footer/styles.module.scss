@@ -1,7 +1,7 @@
 .footer {
-	@apply max-w-[1100px] m-auto flex justify-between items-center gap-6 p-6 border-t border-gray-500 text-gray-300;
+  @apply max-w-[1100px] m-auto flex justify-between items-center gap-6 p-6 border-t border-gray-500 text-gray-300;
 
-	span:nth-of-type(1) {
-		@apply flex-1;
-	}
+  span:nth-of-type(1) {
+    @apply flex-1;
+  }
 }
