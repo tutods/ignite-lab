@@ -17,7 +17,9 @@
 - [x] Storage event details on **GraphCMS**
 - [x] **Docker** files (`docker-compose.yaml` and `Dockerfile`) to run project inside Docker, but in development mode;
 - [ ] Implement Loading screens;
-- [ ] **ESLint** configuration;
+- [x] **ESLint** configuration;
+- [x] Add **Husky** and **Lint Staged** to run on each commit;
+- [ ] Add **Commit Lint** to follow the guidelines on commit messages;
 
 ## 💾 Environment Variables
 
